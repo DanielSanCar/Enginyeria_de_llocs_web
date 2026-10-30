@@ -1,29 +1,29 @@
 const ONEPIECE_BASE_URL = 'http://localhost:3000/api/onepiece/characters';
 
 
- function getOPCharacters() {
-    const response =  fetch(`${ONEPIECE_BASE_URL}?limit=10`);
-    const data =  response.json();
+async function getOPCharacters() {
+    const response = await fetch(`${ONEPIECE_BASE_URL}?limit=10`);
+    const data = await response.json();
     console.log(data);
     return data;
 }
 
- function getCharacterByURL(characterURL) {
-    const response =  fetch(characterURL);
-    const data =  response.json();
+async function getCharacterByURL(characterURL) {
+    const response = await fetch(characterURL);
+    const data = await response.json();
     console.log(data);
     return data;
 }
 
-window.onload =  () => {
-    const OPResponse  =  getOPCharacters(); 
-    const characters = OPResponse.results;
+window.onload = async () => {
+    const characters  = await getOPCharacters(); 
     const mainElement = document.createElement('main');
 
     document.body.appendChild(mainElement);
     
     for (const characterReference of characters) {
-        const character =  getCharacterByURL(characterReference.id);
+        const character = await getCharacterByURL(characterReference.id);
+
 
         const characterElement = document.createElement('div');
 
