@@ -1,8 +1,8 @@
-const API = 'http://localhost:3000/api/onepiece/characters';
+const ONEPIECE_BASE_URL = 'http://localhost:3000/api/onepiece/characters';
 
 
 async function getOPCharacters() {
-    const response = await fetch(`${API}?limit=3`);
+    const response = await fetch(`${ONEPIECE_BASE_URL}?limit=10`);
     const data = await response.json();
     console.log(data);
     return data;
@@ -16,7 +16,7 @@ async function getCharacterByURL(characterURL) {
 }
 
 window.onload = async () => {
-    const OPResponse = await getOPCharacters(); 
+    const OPResponse  = await getOPCharacters(); 
     const characters = OPResponse.results;
     const mainElement = document.createElement('main');
     document.body.appendChild(mainElement);
@@ -34,9 +34,6 @@ window.onload = async () => {
  
         const characterImage = document.createElement('img');
         characterImage.src = character.image_url;
-
-
-     
                 
         characterElement.appendChild(characterName);
         characterElement.appendChild(characterImage);
