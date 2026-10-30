@@ -1,8 +1,8 @@
-const api = " https://bn9ct5dd-3000.uks1.devtunnels.ms";
+const API = 'http://localhost:3000/api/onepiece/characters';
 
 
 async function getOPCharacters() {
-    const response = await fetch(`${api}`);
+    const response = await fetch(`${API}?limit=3`);
     const data = await response.json();
     console.log(data);
     return data;
@@ -16,7 +16,7 @@ async function getCharacterByURL(characterURL) {
 }
 
 window.onload = async () => {
-    const OPResponse = await getOPCharacters(); //1
+    const OPResponse = await getOPCharacters(); 
     const characters = OPResponse.results;
     const mainElement = document.createElement('main');
     document.body.appendChild(mainElement);
@@ -28,8 +28,7 @@ window.onload = async () => {
         const characterElement = document.createElement('div');
 
         const characterName = document.createElement('h2');
-        
-        const characterBountie = document.createElement('h2');        
+        character.bountie[1]
 
         characterName.textContent = `${character.id}. ${character.name[1]}`;
  
@@ -41,6 +40,7 @@ window.onload = async () => {
                 
         characterElement.appendChild(characterName);
         characterElement.appendChild(characterImage);
+        characterImage.appendChild
         //pokemonElement.appendChild(pokemonTypes);
         mainElement.appendChild(characterElement);
     }
