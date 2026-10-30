@@ -1,4 +1,4 @@
-const api = "https://onepieceapi.com/api/characters?limit=10";
+const api = " https://bn9ct5dd-3000.uks1.devtunnels.ms";
 
 
 async function getOPCharacters() {
@@ -21,30 +21,27 @@ window.onload = async () => {
     const mainElement = document.createElement('main');
     document.body.appendChild(mainElement);
     
-    for (const pokemonReference of kantoPokemons) {
-        const pokemon = await getPokemonByUrl(pokemonReference.url);
+    for (const characterReference of characters) {
+        const character = await getCharacterByURL(characterReference.url);
 
 
         const characterElement = document.createElement('div');
 
         const characterName = document.createElement('h2');
         
-        
+        const characterBountie = document.createElement('h2');        
 
-        pokemonName.textContent = `${pokemon.id}. ${pokemon.name}`;
+        characterName.textContent = `${character.id}. ${character.name[1]}`;
  
-        //const pokemonImage = document.createElement('img');
-        //pokemonImage.src = pokemon.sprites.front_shiny;
+        const characterImage = document.createElement('img');
+        characterImage.src = character.image_url;
 
-        //const pokemonImageBack = document.createElement('img');
-    //  pokemonImageBack.src = pokemon.sprites.back_shiny;
 
      
                 
-        pokemonElement.appendChild(pokemonName);
-        //pokemonElement.appendChild(pokemonImage);
-        //pokemonElement.appendChild(pokemonImageBack);
+        characterElement.appendChild(characterName);
+        characterElement.appendChild(characterImage);
         //pokemonElement.appendChild(pokemonTypes);
-        mainElement.appendChild(pokemonElement);
+        mainElement.appendChild(characterElement);
     }
 }
